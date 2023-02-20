@@ -1,18 +1,42 @@
+import { isEmpty } from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 
 export default () => {
   const dispatch = useDispatch();
-  const {
-    post: {
-      data: { children },
-    },
-    replies,
-  } = useSelector((state) => state.thread.value);
-  const thread = children[0].data;
-  console.log(thread);
+  const { post, replies } = useSelector((state) => state.thread.value);
+  const isVideo = post.is_video;
+  const isGifv = post.url.includes(".gifv");
+  const isEmbed = !isEmpty(post.media_embed);
+  const isImage = !post.is_self && !isVideo && !isEmbed;
+  const isText = !isImage && !isVideo;
+  console.log(
+    `isVideo: ${isVideo} isGifv ${isGifv} isImage: ${isImage} isText: ${isText} isEmbed: ${isEmbed}`
+  );
+  const url = () => {
+    let src;
+    if (post.url_overridden_by_dest) {
+      src = post.url_overridden_by_dest;
+    } else {
+      src = post.url;
+    }
+    return src.replace(".gifv", ".mp4");
+  };
   return (
     <div className="thread">
-      <h1>{thread.title}</h1>
+      <h1>{post.title}</h1>
+      {isVideo && (
+        <video
+          src={post.media.reddit_video.fallback_url}
+          controls
+          height="100%"
+          loop
+          autoplay
+        />
+      )}
+      {isGifv && <video src={url()} controls height="100%" loop autoplay />}
+      {isImage && <img src={url()} height="100%" />}
+      {isText && <div>{post.body}</div>}
+      {isEmbed && <iframe src={url()} width="100%" height="100%" />}
     </div>
   );
 };

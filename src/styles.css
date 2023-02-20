@@ -22,6 +22,16 @@ body {
   background: var(--column-bg, #4d394b);
   color: var(--text-color, white);
 }
+.sidebar_item {
+  font-size: 1rem;
+  color: white;
+  text-align: left;
+  margin-left: 10%;
+}
+.sidebar_item:hover {
+  background-color: lightpink;
+  cursor: pointer;
+}
 .feed {
   flex-grow: 4;
   overflow-y: scroll;
@@ -52,4 +62,5 @@ body {
   flex-grow: 2;
   min-width: 40%;
   margin-top: 3%;
+  overflow-y: scroll;
 }

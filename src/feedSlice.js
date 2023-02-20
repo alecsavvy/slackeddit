@@ -14,15 +14,16 @@ export const feedSlice = createSlice({
   },
 });
 
-export const fetchFrontPageThunk = (sub) => async (dispatch) => {
-  const res = await axios.get(
-    `https://www.reddit.com/r/${sub}/.json?limit=100`
-  );
-  // reverse so most recent "message" is first
-  res.data.data.children.reverse();
-  dispatch(hydrate(res.data));
-  dispatch(setPage(sub));
-};
+export const fetchFrontPageThunk =
+  (sub, pathParam, queryParam) => async (dispatch) => {
+    const res = await axios.get(
+      `https://www.reddit.com/r/${sub}/${pathParam}.json?limit=100&${queryParam}`
+    );
+    // reverse so most recent "message" is first
+    res.data.data.children.reverse();
+    dispatch(hydrate(res.data));
+    dispatch(setPage(sub));
+  };
 
 export const { hydrate } = feedSlice.actions;
 

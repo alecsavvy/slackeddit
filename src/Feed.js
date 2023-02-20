@@ -19,7 +19,7 @@ export default () => {
   };
   const onKeyDownHandler = (event) => {
     if (event.key === "Enter") {
-      dispatch(fetchFrontPageThunk(inputValue));
+      dispatch(fetchFrontPageThunk(inputValue, "", ""));
       setInputValue("");
     }
   };
@@ -51,7 +51,8 @@ export default () => {
           className="feed_post"
           onClick={() => onPostClickHandler(data.permalink)}
         >
-          {data.title} {data.ups} {data.downs}
+          {!data.is_self && <img src={data.thumbnail} width="40" height="40" />}
+          {data.title}
         </div>
       ))}
       <AlwaysScrollToBottom />

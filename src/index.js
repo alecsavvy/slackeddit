@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { fetchFrontPageThunk } from "./feedSlice";
 
 // initial state dispatches
-store.dispatch(fetchFrontPageThunk("kitten"));
+store.dispatch(fetchFrontPageThunk("kitten", "hot", ""));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

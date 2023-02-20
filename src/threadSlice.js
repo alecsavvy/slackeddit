@@ -11,7 +11,7 @@ export const threadSlice = createSlice({
   },
   reducers: {
     setThread: (state, action) => {
-      state.value.post = action.payload[0];
+      state.value.post = action.payload[0].data.children[0].data;
       state.value.replies = action.payload[1].data.children;
     },
   },
