@@ -28,15 +28,23 @@ export default () => {
         <video
           src={post.media.reddit_video.fallback_url}
           controls
-          height="100%"
+          height="50%"
           loop
-          autoplay
+          autoPlay
         />
       )}
-      {isGifv && <video src={url()} controls height="100%" loop autoplay />}
-      {isImage && <img src={url()} height="100%" />}
+      {isGifv && <video src={url()} controls max-height="50%" loop autoPlay />}
+      {isImage && <img src={url()} height="50%" />}
       {isText && <div>{post.body}</div>}
-      {isEmbed && <iframe src={url()} width="100%" height="100%" />}
+      {isEmbed && <iframe src={url()} height="50%" />}
+      <Comments />
     </div>
   );
+};
+
+const Comments = () => {
+  const { post, replies } = useSelector((state) => state.thread.value);
+  return replies.map(({ data }) => {
+    return <div key={data.id}>{data.body}</div>;
+  });
 };
