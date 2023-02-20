@@ -1,6 +1,7 @@
 import { applyMiddleware, configureStore } from "@reduxjs/toolkit";
 import pageReducer from "./pageSlice";
-import feedReducer, { fetchFrontPageThunk } from "./feedSlice";
+import threadReducer from "./threadSlice";
+import feedReducer from "./feedSlice";
 import thunk from "redux-thunk";
 
 export default configureStore(
@@ -8,6 +9,7 @@ export default configureStore(
     reducer: {
       feed: feedReducer,
       page: pageReducer,
+      thread: threadReducer,
     },
   },
   applyMiddleware(thunk),

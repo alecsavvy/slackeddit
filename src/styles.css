@@ -44,6 +44,10 @@ body {
 .feed_post {
   margin: 5px;
 }
+.feed_post:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}
 .thread {
   flex-grow: 2;
 }

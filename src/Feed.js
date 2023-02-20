@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { get } from "lodash";
 import { useRef, useEffect, useState } from "react";
 import { fetchFrontPageThunk } from "./feedSlice";
+import { fetchPostThunk } from "./threadSlice";
 
 export default () => {
   const dispatch = useDispatch();
@@ -21,6 +22,9 @@ export default () => {
       dispatch(fetchFrontPageThunk(inputValue));
       setInputValue("");
     }
+  };
+  const onPostClickHandler = (permalink) => {
+    dispatch(fetchPostThunk(permalink));
   };
   const AlwaysScrollToBottom = () => {
     const elementRef = useRef();
@@ -42,7 +46,11 @@ export default () => {
         </h1>
       </div>
       {posts.map(({ data }) => (
-        <div key={data.id} className="feed_post">
+        <div
+          key={data.id}
+          className="feed_post"
+          onClick={() => onPostClickHandler(data.permalink)}
+        >
           {data.title} {data.ups} {data.downs}
         </div>
       ))}
