@@ -50,4 +50,5 @@ body {
 }
 .thread {
   flex-grow: 2;
+  min-width: 40%;
 }
