@@ -1,13 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./styles.css";
+import reportWebVitals from "./reportWebVitals";
+import store from "./store";
+import { Provider } from "react-redux";
+import { fetchFrontPageThunk } from "./feedSlice";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// initial state dispatches
+store.dispatch(fetchFrontPageThunk("kitten"));
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
