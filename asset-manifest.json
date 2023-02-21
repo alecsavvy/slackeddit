@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/slackeddit/static/css/main.f47204f0.css",
+    "main.js": "/slackeddit/static/js/main.69d42e99.js",
+    "static/js/787.c712683f.chunk.js": "/slackeddit/static/js/787.c712683f.chunk.js",
+    "index.html": "/slackeddit/index.html",
+    "main.f47204f0.css.map": "/slackeddit/static/css/main.f47204f0.css.map",
+    "main.69d42e99.js.map": "/slackeddit/static/js/main.69d42e99.js.map",
+    "787.c712683f.chunk.js.map": "/slackeddit/static/js/787.c712683f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f47204f0.css",
+    "static/js/main.69d42e99.js"
+  ]
+}
