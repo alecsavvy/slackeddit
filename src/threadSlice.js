@@ -14,7 +14,7 @@ export const threadSlice = createSlice({
       state.value.post = action.payload[0].data.children[0].data;
       state.value.replies = action.payload[1].data.children;
     },
-    clearThread: (state, action) => {
+    clearThread: (state) => {
       state.value.post = {};
       state.value.replies = {};
     },

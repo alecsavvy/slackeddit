@@ -73,6 +73,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
+  margin: 2%;
 }
 .thread_exit:hover {
   background-color: lightgrey;
