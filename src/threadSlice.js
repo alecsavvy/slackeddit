@@ -14,6 +14,10 @@ export const threadSlice = createSlice({
       state.value.post = action.payload[0].data.children[0].data;
       state.value.replies = action.payload[1].data.children;
     },
+    clearThread: (state, action) => {
+      state.value.post = {};
+      state.value.replies = {};
+    },
   },
 });
 
@@ -22,6 +26,6 @@ export const fetchPostThunk = (permalink) => async (dispatch) => {
   dispatch(setThread(res.data));
 };
 
-export const { setThread } = threadSlice.actions;
+export const { setThread, clearThread } = threadSlice.actions;
 
 export default threadSlice.reducer;

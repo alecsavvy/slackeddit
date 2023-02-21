@@ -61,17 +61,36 @@ body {
 }
 .feed_post_image {
   float: left;
+  border-radius: 20%;
+  padding: 1%;
 }
 .thread {
   flex-grow: 2;
   min-width: 40%;
   overflow-y: scroll;
 }
+.thread_exit {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.thread_exit:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}
 .message {
   display: flex;
   padding: 10px 20px;
   cursor: default;
+  margin: 1%;
 }
 .message:hover {
   background-color: lightgrey;
+}
+.message_time {
+  font-size: 1rem;
+}
+.message_author {
+  font-size: 1rem;
+  font-weight: bold;
 }

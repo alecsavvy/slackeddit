@@ -3,6 +3,7 @@ import { get } from "lodash";
 import { useRef, useEffect, useState } from "react";
 import { fetchFrontPageThunk } from "./feedSlice";
 import { fetchPostThunk } from "./threadSlice";
+import Message from "./Message";
 
 export default () => {
   const dispatch = useDispatch();
@@ -46,25 +47,15 @@ export default () => {
         </h1>
       </div>
       {posts.map(({ data }) => (
-        <div
+        <Message
           key={data.id}
           className="feed_post"
           onClick={() => onPostClickHandler(data.permalink)}
-        >
-          {!data.is_self && (
-            <img
-              src={data.thumbnail}
-              className="feed_post_image"
-              width="40"
-              height="40"
-            />
-          )}
-          <span>
-            <div>{data.author}</div>
-            <div>{data.created_utc}</div>
-            <div>{data.title}</div>
-          </span>
-        </div>
+          author={data.author}
+          message={data.title}
+          time={data.created_utc}
+          img={data.thumbnail}
+        />
       ))}
       <AlwaysScrollToBottom />
     </div>

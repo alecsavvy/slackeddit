@@ -1,5 +1,6 @@
 import { isEmpty } from "lodash";
 import { useSelector, useDispatch } from "react-redux";
+import { clearThread } from "./threadSlice";
 
 export default () => {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ export default () => {
       {isImage && <img src={url()} height="50%" />}
       {isText && <div>{post.body}</div>}
       {isEmbed && <iframe src={url()} height="50%" />}
+      <div className="thread_exit" onClick={() => dispatch(clearThread())}>
+        X
+      </div>
       <Comments />
     </div>
   );
