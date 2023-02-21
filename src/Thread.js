@@ -45,6 +45,11 @@ export default () => {
 const Comments = () => {
   const { post, replies } = useSelector((state) => state.thread.value);
   return replies.map(({ data }) => {
-    return <div key={data.id}>{data.body}</div>;
+    return (
+      <div key={data.id} className="message">
+        {data.body}
+        upvotes: {data.ups}
+      </div>
+    );
   });
 };

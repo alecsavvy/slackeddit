@@ -51,8 +51,19 @@ export default () => {
           className="feed_post"
           onClick={() => onPostClickHandler(data.permalink)}
         >
-          {!data.is_self && <img src={data.thumbnail} width="40" height="40" />}
-          {data.title}
+          {!data.is_self && (
+            <img
+              src={data.thumbnail}
+              className="feed_post_image"
+              width="40"
+              height="40"
+            />
+          )}
+          <span>
+            <div>{data.author}</div>
+            <div>{data.created_utc}</div>
+            <div>{data.title}</div>
+          </span>
         </div>
       ))}
       <AlwaysScrollToBottom />

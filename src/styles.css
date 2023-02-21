@@ -59,8 +59,19 @@ body {
   background-color: lightgrey;
   cursor: pointer;
 }
+.feed_post_image {
+  float: left;
+}
 .thread {
   flex-grow: 2;
   min-width: 40%;
   overflow-y: scroll;
+}
+.message {
+  display: flex;
+  padding: 10px 20px;
+  cursor: default;
+}
+.message:hover {
+  background-color: lightgrey;
 }
