@@ -23,8 +23,16 @@ export default () => {
     return src.replace(".gifv", ".mp4");
   };
   return (
-    <div className="thread">
-      <h1>{post.title}</h1>
+    <div className="thread_container">
+      <h1 className="thread_header">
+        {post.title}
+        <div
+          className="thread_header_exit"
+          onClick={() => dispatch(clearThread())}
+        >
+          X
+        </div>
+      </h1>
       {isVideo && (
         <video
           src={post.media.reddit_video.fallback_url}
@@ -34,14 +42,15 @@ export default () => {
           autoPlay
         />
       )}
-      {isGifv && <video src={url()} controls max-height="50%" loop autoPlay />}
-      {isImage && <img src={url()} height="50%" />}
-      {isText && <div>{post.body}</div>}
-      {isEmbed && <iframe src={url()} height="50%" />}
-      <div className="thread_exit" onClick={() => dispatch(clearThread())}>
-        X
+      <div className="thread">
+        {isGifv && (
+          <video src={url()} controls max-height="50%" loop autoPlay />
+        )}
+        {isImage && <img src={url()} height="50%" />}
+        {isText && <div>{post.body}</div>}
+        {isEmbed && <iframe src={url()} height="50%" />}
+        <Comments />
       </div>
-      <Comments />
     </div>
   );
 };

@@ -33,7 +33,7 @@ export default () => {
     return <div ref={elementRef} />;
   };
   return (
-    <div className="feed">
+    <div className="feed_container">
       <div className="feed_header">
         <h1 className="feed_header_h1">
           #{sub}
@@ -46,18 +46,20 @@ export default () => {
           />
         </h1>
       </div>
-      {posts.map(({ data }) => (
-        <Message
-          key={data.id}
-          className="feed_post"
-          onClick={() => onPostClickHandler(data.permalink)}
-          author={data.author}
-          message={data.title}
-          time={data.created_utc}
-          img={data.thumbnail}
-        />
-      ))}
-      <AlwaysScrollToBottom />
+      <div className="feed">
+        {posts.map(({ data }) => (
+          <Message
+            key={data.id}
+            className="feed_post"
+            onClick={() => onPostClickHandler(data.permalink)}
+            author={data.author}
+            message={data.title}
+            time={data.created_utc}
+            img={data.thumbnail}
+          />
+        ))}
+        <AlwaysScrollToBottom />
+      </div>
     </div>
   );
 };
